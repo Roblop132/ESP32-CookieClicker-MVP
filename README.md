@@ -4,7 +4,7 @@
 MVP port of Cookie Clicker to ESP32-WROOM-32 with an ST7735 greentab2 screen and a 4x4 tactile matrix keypad
 
 
-![](image 5.png)
+![](coc5.png)
 
 ____
 ## Для запуска проекта нужны:
