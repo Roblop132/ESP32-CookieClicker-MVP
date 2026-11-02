@@ -133,6 +133,141 @@ ____
 
 
 
+# ESP32-CookieClicker-MVP
+
+
+MVP port of Cookie Clicker to ESP32-WROOM-32 with an ST7735 greentab2 screen and a 4x4 tactile matrix keypad
+
+
+![](coc5.png)
+
+____
+## Hardware Requirements:
+
+- ESP32 WROOM32 or compatible microcontrollers.
+- ST7735 GREENTAB_2 RGB TFT LCD 160x128
+- 4*4 Matrix Keypad
+- Some jumper wires
+
+## Pinout:
+
+### ST7735
+
+|                | Pins         |
+| ------------- |:-------------:|
+| MOSI          | 23            |
+| SCLK          | 18            |
+| CS            | 5      |
+| DS            | 2      |
+| RES           | 4     |
+| BL            | 21      |
+
+
+### Keypad
+
+|               | Pins         |
+| ------------- |:-------------:|
+| ROW 1          | 13            |
+| ROW 2          | 19            |
+| ROW 3            | 22      |
+| ROW 4            | 17      |
+| COL 1           | 27     |
+| COL 2            | 26      |
+| COL 3            | 25      |
+| COL 4            | 14      |
+
+## About the Project
+
+This is my very first public project, whipped up in just a couple of days. Initially, there was no grand goal—just pure enthusiasm and a desire to learn something new.
+____
+### V0.1
+![](coc4.png)
+
+- In the very first version, I was just scratching the surface of clicker mechanics. The variables used `unsigned long long`, limiting the cookie count to roughly 19 quintillion. For a proper clicker game, that is *WAY* too low >:[
+  
+- No alpha-channel transparency support. I thought about adding it but ran into a brick wall: ST7735 only supports 16-bit RGB565. There was no alpha channel for transparency, and I only found this out *after* uploading 24-bit ARGB8888 assets. Everything shifted, broke, and turned into visual garbage. Too bad I didn't take any photos back then (( Oh well, I just decided to ignore it for a while.
+  
+- Only 3 types of autoclickers: Cursors, Grandmas, and Farms. They weren't hard to build. Just basic math and logic.
+
+- Number formatting was only supported up to trillions. I was too lazy to figure it out properly, so I just successfully vibecoded it. Yeah, yeah, I'm a loser :]
+
+- The entire project was crammed into a single `main.cpp` file. By the end of v0.1, navigating through it was a massive pain.
+
+- Income was credited once every 10 seconds in huge sudden chunks, which severely tanked the dopamine loop.
+  
+#### IN SHORT:
+
+It was simple, fun, everything was brand new to me, and I loved it.
+
+____
+### V0.2
+![](coc3.png)
+
+- New autoclickers unlocked: Mine, Factory, Bank, and Temple.
+
+- A huge, juicy, and delicious main cookie was added!!!
+
+- Transparency was finally implemented... but not the way you think. I literally just painted the transparent areas with the background color and called it a day +++
+
+- Added sprites for the autoclickers in the shop. I generated them using AI, though initially, I tried drawing everything by hand ((( Yeah, yeah, I'm a loser >:]
+
+- Added a Clicks-Per-Second (CPS) counter from autoclickers. The problem was that fractional numbers were rounded down, so the 0.1 CPS from a cursor just didn't register at all.
+
+- Formatting now comes with a DeCiMaL pOiNt, let's gooo. But it's not a float or double type. It's still `unsigned long long`. BUT HOW!?!? A decimal point with an integer format? Honestly, I don't really know because I totally vibecoded it and yeah, yeah, I'm a loser >:] but basically, the number gets divided by a certain amount depending on its digit length and count. For trillions, we divide by 100k, for billions by 10k, or something like that, idk wtf is going on tbh. And there is a dot printed between two integer variables (the second one being the result of the division) followed by a specific suffix string.
+
+- Switched to a "penny" system, which smoothly and rapidly increments the numbers ALL THE TIME instead of a single payout every 10 seconds. This massively spikes the dopamine levels and creates great dynamics. Also, now there are 3 digits after the decimal point instead of 1, which means the numbers tick up EVEN faster, EVEN more dynamically, and bring EVEN MORE dopamine.
+
+- The project was refactored and split into separate .cpp and .h files.
+
+#### IN SHORT:
+
+The project expanded, ambitions skyrocketed, and plans multiplied exponentially... but my scanner brain completely disagreed with this. It had already collected 90% of the dopamine from this project and was slowly cutting off the energy supply... Neurobiology is a complicated thing ((
+____
+### V0.3 beta
+![](coc2.png)
+
+And here comes the crash of my ambitions...
+
+- Only one new autoclicker added: Wizard Tower.
+
+- Animations are here! The cookie now constantly rotates, and when clicked, it pulses visually.
+
+- Finally migrated from `unsigned long long` to `long double` and `double`, which expanded my limits up to 10^308!!! That's more than enough for a regular clicker game.
+
+- Formatting now uses a real decimal point and actual floating-point math. Also, past trillions, it switches to scientific notation with mantissa and exponent. Something like: 10e15.
+
+- Transparency is finally real. Switching from rgb565 to rgb565a8 gave me exactly what I needed—true transparency.
+
+- Implemented screen transitions, but the system is glitchy. If you have active autoclickers and switch between screens, the game suddenly awards you millions of cookies out of nowhere at ~10 CPS.
+
+- Displaying the CPS value for an individual building in the shop.
+
+#### IN SHORT:
+
+Most of the work went into refactoring the internal architecture rather than adding new features.
+
+According to the original plans for v0.3, there should have been: a screen graphically displaying your buildings, upgrades, a news ticker, about 3 more new autoclickers, a milk system, and a settings menu. But the interest vanished, the brain stopped allocating energy to the project, and it is what it is. If this happens, I physically can't force myself to continue, so I am passing this project over to YOU! I am definitely not finishing it.
+____
+
+### What can be added:
+- Dynamic asset loading for sprites using a MicroSD card module.
+
+- A news ticker, milk system, the rest of the missing buildings, more juicy animations for extra juice, save slots, settings, upgrades, and basically everything else from the original Cookie Clicker.
+
+- Literally whatever you want, you can add.
+____
+
+### Bugs:
+- When CPS = 0.2, manual clicks only register every 2 presses.
+
+- When switching between screens, the game awards millions, trillions, and centillions of cookies instantly, depending on your current main CPS.
+
+
+# HANDING THE PROJECT OVER TO YOU
+
+
+
+
 
 
 
