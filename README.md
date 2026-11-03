@@ -4,7 +4,7 @@
 MVP port of Cookie Clicker to ESP32-WROOM-32 with an ST7735 greentab2 screen and a 4x4 tactile matrix keypad
 
 
-![](coc5.png)
+![](imgsformd/coc5.png)
 
 ____
 ## Для запуска проекта нужны:
@@ -46,7 +46,7 @@ ____
 Это мой первый публичный проект, собранный за пару дней. Изначально не было никакой цели, чистый энтузиазм и изучение нового.
 ____
 ### V0.1
-![](coc4.png)
+![](imgsformd/coc4.png)
 
 - В самой первой версии мне только открывались основные механики кликеров. Переменные были сделаны через Unsigned long long и давали числа лишь до 19 квинтилионов. Для кликеров это ОЧЕНЬ МАЛО >:[
   
@@ -66,7 +66,7 @@ ____
 
 ____
 ### V0.2
-![](coc3.png)
+![](imgsformd/coc3.png)
 
 - Появились новые автокликеры : шахта, фабрика, банк и храм
 
@@ -139,7 +139,7 @@ ____
 MVP port of Cookie Clicker to ESP32-WROOM-32 with an ST7735 greentab2 screen and a 4x4 tactile matrix keypad
 
 
-![](coc5.png)
+![](imgsformd/coc5.png)
 
 ____
 ## Hardware Requirements:
@@ -181,7 +181,7 @@ ____
 This is my very first public project, whipped up in just a couple of days. Initially, there was no grand goal—just pure enthusiasm and a desire to learn something new.
 ____
 ### V0.1
-![](coc4.png)
+![](imgsformd/coc4.png)
 
 - In the very first version, I was just scratching the surface of clicker mechanics. The variables used `unsigned long long`, limiting the cookie count to roughly 19 quintillion. For a proper clicker game, that is *WAY* too low >:[
   
@@ -224,7 +224,7 @@ ____
 The project expanded, ambitions skyrocketed, and plans multiplied exponentially... but my scanner brain completely disagreed with this. It had already collected 90% of the dopamine from this project and was slowly cutting off the energy supply... Neurobiology is a complicated thing ((
 ____
 ### V0.3 beta
-![](coc2.png)
+![](imgsformd/coc2.png)
 
 And here comes the crash of my ambitions...
 
