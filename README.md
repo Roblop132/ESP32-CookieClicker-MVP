@@ -89,7 +89,7 @@ ____
 Проект расширялся, амбиции росли, планы увеличивались в экспоненте но вот мой сканерский мозг с этим не согласен... Он уже получил 90% дофамина с этого проекта и потихоньку перестает выделять энергию... Нейробиология сложная штука((
 ____
 ### V0.3 beta
-![](coc2.png)
+![](imgsformd/coc2.png)
 
 И тут крах моих амбиций...
 
@@ -201,7 +201,7 @@ It was simple, fun, everything was brand new to me, and I loved it.
 
 ____
 ### V0.2
-![](coc3.png)
+![](imgsformd/coc3.png)
 
 - New autoclickers unlocked: Mine, Factory, Bank, and Temple.
 
