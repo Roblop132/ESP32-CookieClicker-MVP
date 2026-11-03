@@ -41,6 +41,89 @@ ____
 | COL 3            | 25      |
 | COL 4            | 14      |
 
+## Что куда ложить, что за что отвечает:
+Папки graphics и functions надо положить в src, где main.cpp. В папке graphics лежат СПРАЙТЫ. Все картинки, печеньки все там.
+
+## Platformio.ini
+
+Мои настройки:
+
+[env:esp32dev]
+
+• platform = espressif32
+
+• board = esp32dev
+
+• framework = arduino
+  
+  lib_deps =  
+  
+  • bodmer/TFT_eSPI@^2.5.43
+  
+  • lvgl/lvgl@^9.6.0
+  
+
+
+
+build_flags = 
+
+	• -D LV_CONF_INCLUDE_SIMPLE
+  
+	• -D USER_SETUP_LOADED=1
+  
+	• -D ST7735_DRIVER=1
+  
+	• -D ST7735_GREENTAB2=1
+  
+	• -D TFT_WIDTH=128
+  
+	• -D TFT_HEIGHT=160
+  
+	• -D TFT_MOSI=23
+  
+	• -D TFT_SCLK=18
+  
+	• -D TFT_CS=5
+  
+	• -D TFT_DC=2
+  
+	• -D TFT_RST=4
+  
+	• -D SPI_FREQUENCY=27000000
+  
+
+  ____
+
+## Папка functions
+- autoclicer.cpp. В данном файле реализована функция пассивного заработка. Сюда мы вписываем новые income_per_interval от новых зданий и они прибавляют свое значение к деньгами
+
+- flush.cpp. В данном файле реализована отправка графики на экран. Flush функция.
+
+- format.cpp. В данном файле реализована функция форматирования чисел для 4 лейблов где это надо: лейбл денег, лейбл цены товара, лейбл CPS и лейбл main cps. Добавляются суффиксы и осуществляется перевод в экспоненциальную запись с мантиссой и экспонентой. Весь этот файл 100% вайбкода
+
+- keys.cpp. В данном файле идет работа с клавиатурой а именно задаются: на какую кнопку что работает, на какую кнопку купить а на какую нажать что бы добыть. Кстати тут есть чит функция на первой кнопке которая начисляет триллион денег. Было создано для быстрой проверки чисел и форматирования
+
+- matrica.cpp. В данном файле реализована функция опроса клавиатуры и задана логика одиночного нажатия с антидребезгом через delay(5)
+
+- screens.cpp. В данном файле осуществляется все работа с графикой, вывод анимаций, спрайтов, статичных линий и прочего - все здесь
+
+- shopUI.cpp. В данном файле реализованы функции отображения графики магазина, цвет лейблов в зависимости от наличия денег, вывод надписей и стилизация. Все связанное с магазином здесь
+
+- tft.cpp. Функция инициализации экрана
+
+____
+
+### h.файлы.
+Всего один h файл- all.h. Его мы кладем в папку include. В нем обьявлены все переменные, функции и прочее. Обычный h файл
+
+### lv_conf.h.
+В нем включены все нужные настройки LVGL именно под мой сетап. Лежит по пути: PlatformIO\Projects\gugugaga\.pio\libdeps\esp32dev\lvgl\lv_conf.h
+
+### user_setup.h
+В нем включены все нужные настройки TFT_eSPI. Лежит по пути: PlatformIO\Projects\gugugaga\.pio\libdeps\esp32dev\TFT_eSPI\User_Setup.h
+
+____
+
 ## О проекте
 
 Это мой первый публичный проект, собранный за пару дней. Изначально не было никакой цели, чистый энтузиазм и изучение нового.
@@ -175,6 +258,91 @@ ____
 | COL 2            | 26      |
 | COL 3            | 25      |
 | COL 4            | 14      |
+
+
+## What goes where, what does what:
+The graphics and functions folders need to be put into src, where main.cpp is. The graphics folder contains SPRITES. All images, cookies, everything is in there.
+
+## Platformio.ini
+
+My settings:
+
+[env:esp32dev]
+
+• platform = espressif32
+
+• board = esp32dev
+
+• framework = arduino
+  
+  lib_deps =  
+  
+  • bodmer/TFT_eSPI@^2.5.43
+  
+  • lvgl/lvgl@^9.6.0
+  
+
+
+
+build_flags = 
+
+	• -D LV_CONF_INCLUDE_SIMPLE
+  
+	• -D USER_SETUP_LOADED=1
+  
+	• -D ST7735_DRIVER=1
+  
+	• -D ST7735_GREENTAB2=1
+  
+	• -D TFT_WIDTH=128
+  
+	• -D TFT_HEIGHT=160
+  
+	• -D TFT_MOSI=23
+  
+	• -D TFT_SCLK=18
+  
+	• -D TFT_CS=5
+  
+	• -D TFT_DC=2
+  
+	• -D TFT_RST=4
+  
+	• -D SPI_FREQUENCY=27000000
+  
+
+  ____
+
+## functions folder
+- autoclicer.cpp. This file implements the passive income function. This is where we add new income_per_interval from new buildings, and they add their value to the money
+
+- flush.cpp. This file implements sending graphics to the screen. The flush function.
+
+- format.cpp. This file implements the number formatting function for 4 labels where it's needed: the money label, the item price label, the CPS label, and the main cps label. It adds suffixes and converts numbers into scientific notation with a mantissa and an exponent. This entire file is 100% vibe-coded
+
+- keys.cpp. This file handles the keyboard, specifically setting: which button does what, which button is for buying, and which one is for clicking to mine. By the way, there is a cheat function on the first button that grants a trillion money. It was made for quick testing of numbers and formatting
+
+- matrica.cpp. This file implements the keyboard polling function and defines the single-press logic with debouncing via delay(5)
+
+- screens.cpp. This file handles all the graphics work, displaying animations, sprites, static lines, and other stuff — everything is here
+
+- shopUI.cpp. This file implements the shop graphics rendering functions, label colors depending on whether you have enough money, text output, and styling. Everything related to the shop is here
+
+- tft.cpp. The screen initialization function
+
+____
+
+### .h files
+There is only one h file — all.h. We put it in the include folder. It declares all variables, functions, and so on. A regular h file
+
+### lv_conf.h
+It enables all the necessary LVGL settings specifically for my setup. Located at: PlatformIO\Projects\gugugaga\.pio\libdeps\esp32dev\lvgl\lv_conf.h
+
+### user_setup.h
+It enables all the necessary TFT_eSPI settings. Located at: PlatformIO\Projects\gugugaga\.pio\libdeps\esp32dev\TFT_eSPI\User_Setup.h
+
+____
+
 
 ## About the Project
 
